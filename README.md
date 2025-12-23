@@ -136,10 +136,12 @@ Verify:
 
 5️⃣ Run the LLM application
 
-Open a new terminal (same venv):
+Open a new terminal (same venv) and make sure your OpenAI API key is set:
 
 ```bash
-python llm_app.py
+$ export OPENAI_API_KEY="your-key-here"
+
+$ python llm_app.py
 ```
 
 ## 📄 Note on `mcp_client.py`
