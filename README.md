@@ -115,7 +115,7 @@ pip install -r requirements.txt
 
 3️⃣ Initialize the database
 
-This creates a SQLite database with realistic employee data.
+This creates a SQLite database with realistic employee data (Example).
 
 ```bash
 python init_db.py
@@ -125,6 +125,8 @@ python init_db.py
 
 ```bash
 uvicorn mcp_server:app --port 3333
+Or 
+uvicorn mcp_server:app --reload --port 3333
 ```
 
 Verify:
@@ -139,6 +141,33 @@ Open a new terminal (same venv):
 ```bash
 python llm_app.py
 ```
+
+## 📄 Note on `mcp_client.py`
+
+You may notice a file named `mcp_client.py` in this repository.
+
+This file is not required for the main application flow and is not used by `llm_app.py`.
+
+Why it exists:
+
+- It is a standalone MCP client used to:
+  - Test MCP tool discovery (`/mcp/tools`)
+  - Execute MCP tools directly without involving an LLM
+  - Debug database queries and MCP server behavior in isolation
+
+Actual execution flow:
+
+- `llm_app.py` acts as the real MCP client when the LLM is running
+- `mcp_client.py` exists purely for learning, debugging, and demonstration purposes
+
+You can safely remove this file if you only want the LLM-driven experience.
+
+Optional one-liner (even shorter)
+
+If you want something ultra-minimal:
+
+`mcp_client.py` is an optional utility to interact with the MCP server without an LLM. The main application (`llm_app.py`) already acts as the MCP client during normal execution.
+
 
 ## 💬 Sample Conversation
 
